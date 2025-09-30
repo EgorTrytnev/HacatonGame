@@ -6,21 +6,28 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
     private Animator animator;
+    private Detector detectorEnemy;
+    private HeatPointsController heatPointsController;
 
     private Vector2 centerPoint;
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int speedAttack = 5;
 
     private Transform target;
-    [SerializeField]private float stopRadius = 2f;
+    [SerializeField] private float stopRadius = 2f;
+    private bool isFollowPlayer = false;
 
     private bool isRandAction = true;
+    private bool isAttacking = false;
 
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        detectorEnemy = GetComponent<Detector>();
+        heatPointsController = GetComponent<HeatPointsController>();
 
         centerPoint = transform.position;
 
@@ -79,38 +86,89 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void SetTarget(Transform newTarget)
+    public void SetTargetPlayer(Transform newTarget)
     {
         SetMovementActive(false);
         target = newTarget;
+        isFollowPlayer = true;
     }
-    public void DeleteTarget()
+    public void DeleteTargetPlayer()
     {
         SetMovementActive(true);
         target = null;
+        isFollowPlayer = false;
+    }
+
+    public void SetTargetEnemy()
+    {
+        SetMovementActive(false);
+        target = detectorEnemy.DetectTarget();
+        isFollowPlayer = false;
+        if (target == null)
+        {
+            SetMovementActive(true);
+            target = null;
+            Debug.Log("Not found enemy");
+        }
+
     }
 
     void Update()
     {
+        //TODO: Сделать логику для преследования врага и атаки, и логику для перса
         if (!isRandAction)
         {
-            if (target == null)
-                return;
-
-            Vector3 direction = (target.position - transform.position);
-            float distance = direction.magnitude;
-
-            if (distance > stopRadius)
-            {
-                Vector3 moveDir = direction.normalized;
-                transform.position += moveDir * moveSpeed * Time.deltaTime;
-            }
+            if (isFollowPlayer)
+                FollowToPlayer();
             else
-            {
-
-            }
+                FollowToEnemy();
+                
         }
     }
+
+    private void FollowToPlayer()
+    {
+        
+        if (target == null)
+            return;
+
+        Vector3 direction = target.position - transform.position;
+        float distance = direction.magnitude;
+
+        if (distance > stopRadius)
+        {
+            Vector3 moveDir = direction.normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+
+        }
+    }
+
+    private void FollowToEnemy()
+    {
+        if (target == null)
+            return;
+
+        Vector3 direction = target.position - transform.position;
+
+        Vector3 moveDir = direction.normalized;
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+        if (detectorEnemy.GetCanHit() && !isAttacking)
+        {
+            StartCoroutine(AttackAction());
+        }
+    }
+
+IEnumerator AttackAction()
+{
+    isAttacking = true;
+    yield return new WaitForSeconds(speedAttack);
+    target.GetComponent<HeatPointsController>().TakeDamage(1);
+    isAttacking = false;
+}
     public void SetMovementActive(bool active)
     {
         isRandAction = active;
@@ -119,10 +177,12 @@ public class EnemyController : MonoBehaviour
         if (active)
             centerPoint = transform.position;
     }
-    
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(centerPoint, maxDistance);
     }
+    
+
 }

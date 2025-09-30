@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Unit
   - Spawner
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Unit
   - Collision
-  - 
+  - Enemy
   - 
   - 
   - 

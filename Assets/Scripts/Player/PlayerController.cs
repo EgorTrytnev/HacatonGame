@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spawnDetector = GetComponent<SpawnDetector>();
+
     }
 
     void Update()
     {
         PlayerMove();
         PlayerActions();
+        
     }
 
     void PlayerMove()
@@ -67,6 +69,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             spawnDetector.StopFollowMe("Zomby");
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            spawnDetector.AtackEnemy("Zomby");
         }
 
     }
