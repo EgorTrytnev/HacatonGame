@@ -26,11 +26,24 @@ public class Detector : MonoBehaviour
 
             // Проверяем, есть ли преграда между персонажем и целью
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask);
-            if (hit.collider == null && target.CompareTag("Enemy"))
-            {
-                Debug.Log("Цель обнаружена: " + target.name);
-                unitTransform = target.gameObject.transform;
+            var targetUnit = target.GetComponent<UnitsDefinition>();
+            var myUnit = gameObject.GetComponent<UnitsDefinition>();
 
+            if (targetUnit != null && myUnit != null)
+            {
+                if (hit.collider == null && targetUnit.GetTeam() != myUnit.GetTeam())
+                {
+                    Debug.Log("Цель обнаружена: " + target.name);
+                    unitTransform = target.gameObject.transform;
+                }
+            }
+            else if (myUnit == null)
+            {
+                Debug.LogWarning("Отсутствует компонент UnitsDefinition у цели или у детектора");
+            }
+            else
+            {
+                Debug.Log("His in my team");
             }
 
 
@@ -40,16 +53,27 @@ public class Detector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        var targetUnit = collision.GetComponent<UnitsDefinition>();
+        var myUnit = gameObject.GetComponent<UnitsDefinition>();
+        if (targetUnit != null && myUnit != null)
         {
-            canHit = true;
+            if (targetUnit != myUnit)
+            {
+                canHit = true;
+            }
         }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        var targetUnit = collision.GetComponent<UnitsDefinition>();
+        var myUnit = gameObject.GetComponent<UnitsDefinition>();
+        if (targetUnit != null && myUnit != null)
         {
-            canHit = false;
+            if (targetUnit != myUnit)
+            {
+                canHit = false;
+            }
         }
     }
 

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator animator;
     private SpawnDetector spawnDetector;
+    [SerializeField]private CollorTeam collorTeam;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             if (spawnDetector.getSpawnAllowed())
             {
-                spawnDetector.SpawnMob("Zomby");
+                spawnDetector.SpawnMob(collorTeam, "Zomby");
             }
             else
             {

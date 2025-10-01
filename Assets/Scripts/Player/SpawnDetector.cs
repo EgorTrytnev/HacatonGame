@@ -39,13 +39,14 @@ public class SpawnDetector : MonoBehaviour
         return spawnAllowed;
     }
 
-    public void SpawnMob(string Name = "default")
+    public void SpawnMob(CollorTeam team, string Name = "default")
     {
         
         if (spawnUnits != null)
         {
             Debug.Log("In Detector");
             GameObject unit = spawnUnits.SpawnUnit(transform, Name);
+            unit.GetComponent<UnitsDefinition>().SetTeam(team);
             myUnits.Add(unit);
         }
     }

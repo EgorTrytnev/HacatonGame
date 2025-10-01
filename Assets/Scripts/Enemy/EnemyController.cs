@@ -164,16 +164,24 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    IEnumerator AttackAction()
+IEnumerator AttackAction()
+{
+    isAttacking = true;
+    yield return new WaitForSeconds(speedAttack);
+    bool isDead = target.GetComponent<HeatPointsController>().TakeDamage(1);
+    if (!isDead)
     {
-        isAttacking = true;
-        yield return new WaitForSeconds(speedAttack);
-        bool isDead = target.GetComponent<HeatPointsController>().TakeDamage(1);
-        if(!isDead)
-            target.GetComponent<EnemyController>().StartCoroutine(ReactByAttack(gameObject));
+        var targetUnit = target.GetComponent<EnemyController>(); 
 
-        isAttacking = false;
+        if (targetUnit != null)
+            targetUnit.GetComponent<EnemyController>().StartCoroutine(ReactByAttack(gameObject));
+        else
+            Debug.Log("Less");
     }
+
+    isAttacking = false;
+}
+
     IEnumerator ReactByAttack(GameObject newTarget)
     {
         SetTargetEnemy();
@@ -183,7 +191,7 @@ public class EnemyController : MonoBehaviour
 
         
     }
-    
+
     
 
     public void SetMovementActive(bool active)
