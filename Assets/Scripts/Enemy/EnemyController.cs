@@ -12,14 +12,18 @@ public class EnemyController : MonoBehaviour
     private Vector2 centerPoint;
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float multiplySpeed = 1.5f;
     [SerializeField] private int speedAttack = 5;
 
     private Transform target;
-    [SerializeField] private float stopRadius = 2f;
+    [SerializeField] private float stopRadiusPlayer = 2f;
+    [SerializeField] private float stopRadiusEnemy = 0.3f;
     private bool isFollowPlayer = false;
 
     private bool isRandAction = true;
     private bool isAttacking = false;
+
+    private Coroutine attackCoroutine;
 
     void Start()
     {
@@ -48,7 +52,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!isRandAction)
             {
-                _rb.velocity = Vector2.zero;
+                _rb.linearVelocity = Vector2.zero;
                 yield return null;
                 continue;
             }
@@ -62,17 +66,17 @@ public class EnemyController : MonoBehaviour
             {
                 if (!isRandAction)
                 {
-                    _rb.velocity = Vector2.zero;
+                    _rb.linearVelocity = Vector2.zero;
                     break;
                 }
 
-                _rb.velocity = direction * moveSpeed;
+                _rb.linearVelocity = direction * moveSpeed;
                 yield return null;
                 distance = Vector2.Distance(transform.position, targetPos);
                 direction = (targetPos - (Vector2)transform.position).normalized;
             }
 
-            _rb.velocity = Vector2.zero;
+            _rb.linearVelocity = Vector2.zero;
 
             float waitTime = Random.Range(3f, 6f);
             float elapsed = 0f;
@@ -86,13 +90,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void SetTargetPlayer(Transform newTarget)
+    public void SetMainTarget(Transform newTarget)
     {
         SetMovementActive(false);
         target = newTarget;
         isFollowPlayer = true;
     }
-    public void DeleteTargetPlayer()
+    public void DeleteMainTarget()
     {
         SetMovementActive(true);
         target = null;
@@ -110,32 +114,55 @@ public class EnemyController : MonoBehaviour
             target = null;
             Debug.Log("Not found enemy");
         }
+        Debug.Log("Set target - " + target.name);
 
+    }
+    public void SetTargetEnemy(Transform targetEnemy)
+    {
+        SetMovementActive(false);
+        target = targetEnemy;
+        isFollowPlayer = false;
     }
 
     void Update()
     {
-        //TODO: Сделать логику для преследования врага и атаки, и логику для перса
-        if (!isRandAction)
+        if (isRandAction) return;
+
+        if (target == null)
         {
-            if (isFollowPlayer)
-                FollowToPlayer();
-            else
-                FollowToEnemy();
-                
+            isRandAction = true;
+            StopAttack();
+            return;
         }
+        if (isFollowPlayer)
+            FollowToPlayer();
+        else
+            FollowToEnemy();
     }
+    
+    void StopAttack()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+            SetSpeedForLeave();
+        }
+        isAttacking = false;
+    }
+
+
 
     private void FollowToPlayer()
     {
-        
+
         if (target == null)
             return;
 
         Vector3 direction = target.position - transform.position;
         float distance = direction.magnitude;
 
-        if (distance > stopRadius)
+        if (distance > stopRadiusPlayer)
         {
             Vector3 moveDir = direction.normalized;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
@@ -146,21 +173,38 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void SetSpeedForLeaveFunc()
+    {
+        StartCoroutine(SetSpeedForLeave());
+    }
+
+    IEnumerator SetSpeedForLeave()
+    {
+        Debug.Log("LEEEEEAVE");
+        moveSpeed *= multiplySpeed;
+        yield return new WaitForSeconds(2f);
+        moveSpeed /= multiplySpeed;
+    }
+
     private void FollowToEnemy()
     {
-        if (target == null) { 
+        if (target == null)
+        {
             isRandAction = true;
             return;
         }
 
         Vector3 direction = target.position - transform.position;
+        float distance = direction.magnitude;
 
-        Vector3 moveDir = direction.normalized;
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
-
+        if (distance > stopRadiusEnemy)
+        {
+            Vector3 moveDir = direction.normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+        }
         if (detectorEnemy.GetCanHit() && !isAttacking)
         {
-            StartCoroutine(AttackAction());
+            attackCoroutine = StartCoroutine(AttackAction());
         }
     }
 
@@ -168,13 +212,27 @@ IEnumerator AttackAction()
 {
     isAttacking = true;
     yield return new WaitForSeconds(speedAttack);
-    bool isDead = target.GetComponent<HeatPointsController>().TakeDamage(1);
+
+    if (target == null)
+        {
+            isAttacking = false;
+            yield break;
+        }
+
+    var hp = target.GetComponent<HeatPointsController>();
+    if (hp == null)
+    {
+        isAttacking = false;
+        yield break;
+    }
+
+    bool isDead = hp.TakeDamage(1);
     if (!isDead)
     {
-        var targetUnit = target.GetComponent<EnemyController>(); 
+        var targetUnit = target.GetComponent<EnemyController>();
 
         if (targetUnit != null)
-            targetUnit.GetComponent<EnemyController>().StartCoroutine(ReactByAttack(gameObject));
+            targetUnit.ReactByAttack(gameObject.transform);
         else
             Debug.Log("Less");
     }
@@ -182,14 +240,10 @@ IEnumerator AttackAction()
     isAttacking = false;
 }
 
-    IEnumerator ReactByAttack(GameObject newTarget)
+    public void ReactByAttack(Transform attacker)
     {
-        SetTargetEnemy();
-        FollowToEnemy();
-        yield return new WaitForSeconds(2f);
-        newTarget.GetComponent<HeatPointsController>().TakeDamage(1); 
-
-        
+        // При атаке начинаем преследовать атаковавшего
+        SetTargetEnemy(attacker);
     }
 
     
@@ -198,8 +252,8 @@ IEnumerator AttackAction()
     {
         isRandAction = active;
         if (!active)
-            _rb.velocity = Vector2.zero;
-        if (active)
+            _rb.linearVelocity = Vector2.zero;
+        else
             centerPoint = transform.position;
     }
 

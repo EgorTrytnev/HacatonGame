@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 newDir = new Vector2(_hor, _ver).normalized;
 
-        _rb.velocity = newDir * speed;
+        _rb.linearVelocity = newDir * speed;
     }
 
     void PlayerActions()

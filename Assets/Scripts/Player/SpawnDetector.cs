@@ -58,7 +58,7 @@ public class SpawnDetector : MonoBehaviour
             UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
             if (unitName.GetUnitName().ToLower() == Name.ToLower())
             {
-                unit.GetComponent<EnemyController>().SetTargetPlayer(transform);
+                unit.GetComponent<EnemyController>().SetMainTarget(transform);
             }
         }
     }
@@ -69,7 +69,7 @@ public class SpawnDetector : MonoBehaviour
             UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
             if (unitName.GetUnitName().ToLower() == Name.ToLower())
             {
-                unit.GetComponent<EnemyController>().DeleteTargetPlayer();
+                unit.GetComponent<EnemyController>().DeleteMainTarget();
             }
         }
     }
@@ -81,7 +81,7 @@ public class SpawnDetector : MonoBehaviour
             UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
             if (unitName.GetUnitName().ToLower() == Name.ToLower())
             {
-                unit.GetComponent<EnemyController>().DeleteTargetPlayer();
+                unit.GetComponent<EnemyController>().DeleteMainTarget();
                 unit.GetComponent<EnemyController>().SetTargetEnemy();
             }
         }
