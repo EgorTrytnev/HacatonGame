@@ -148,8 +148,10 @@ public class EnemyController : MonoBehaviour
 
     private void FollowToEnemy()
     {
-        if (target == null)
+        if (target == null) { 
+            isRandAction = true;
             return;
+        }
 
         Vector3 direction = target.position - transform.position;
 
@@ -162,13 +164,28 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-IEnumerator AttackAction()
-{
-    isAttacking = true;
-    yield return new WaitForSeconds(speedAttack);
-    target.GetComponent<HeatPointsController>().TakeDamage(1);
-    isAttacking = false;
-}
+    IEnumerator AttackAction()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(speedAttack);
+        bool isDead = target.GetComponent<HeatPointsController>().TakeDamage(1);
+        if(!isDead)
+            target.GetComponent<EnemyController>().StartCoroutine(ReactByAttack(gameObject));
+
+        isAttacking = false;
+    }
+    IEnumerator ReactByAttack(GameObject newTarget)
+    {
+        SetTargetEnemy();
+        FollowToEnemy();
+        yield return new WaitForSeconds(2f);
+        newTarget.GetComponent<HeatPointsController>().TakeDamage(1); 
+
+        
+    }
+    
+    
+
     public void SetMovementActive(bool active)
     {
         isRandAction = active;

@@ -510,10 +510,10 @@ CapsuleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -567,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 5
   moveSpeed: 2
+  speedAttack: 1
   stopRadius: 2
 --- !u!114 &-1727342009065457350
 MonoBehaviour:

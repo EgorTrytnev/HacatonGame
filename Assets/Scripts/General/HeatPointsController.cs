@@ -10,6 +10,7 @@ public class HeatPointsController : MonoBehaviour
     [SerializeField] private float healthTime = 10;
     [SerializeField] private Slider slider;
     private float curHealthTime;
+    private bool isDead = false;
 
 
     void Start()
@@ -22,8 +23,7 @@ public class HeatPointsController : MonoBehaviour
     void Update()
     {
         KeepTrackHP();
-
-        CheckHP();
+        checkActive();
     }
 
     private void KeepTrackHP()
@@ -39,10 +39,13 @@ public class HeatPointsController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
         curHP -= damage;
         slider.value += damage;
+        return CheckHP();
+
+        
     }
     public void HealthHP(int hp)
     {
@@ -50,12 +53,27 @@ public class HeatPointsController : MonoBehaviour
         slider.value -= hp;
     }
 
-    private void CheckHP()
+    private bool CheckHP()
     {
         if (curHP <= 0)
         {
             Debug.Log("Death: " + gameObject.name);
+            gameObject.SetActive(false);
+            return true;
+        }
+        return false;
+    }
+
+    private void checkActive()
+    {
+        if (!gameObject.activeSelf)
+        {
             Destroy(gameObject);
         }
+    }
+
+    public bool GetIsDead()
+    {
+        return isDead;
     }
 }
