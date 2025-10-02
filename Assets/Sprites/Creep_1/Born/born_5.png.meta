@@ -1,0 +1,1235 @@
+fileFormatVersion: 2
+guid: 7cc15627b9bbb7943930de971eefb6d4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3971461600051074334
+    second: born_5_0
+  - first:
+      213: -7790629888221797631
+    second: born_5_1
+  - first:
+      213: 2256921010297350929
+    second: born_5_2
+  - first:
+      213: 1486169467435633383
+    second: born_5_3
+  - first:
+      213: -6293529077014412531
+    second: born_5_4
+  - first:
+      213: -1747636816265687985
+    second: born_5_5
+  - first:
+      213: -1261945575791488598
+    second: born_5_6
+  - first:
+      213: -2433908972727915830
+    second: born_5_7
+  - first:
+      213: 7841477525547417040
+    second: born_5_8
+  - first:
+      213: -5373636295341695513
+    second: born_5_9
+  - first:
+      213: -6116253872846408320
+    second: born_5_10
+  - first:
+      213: 894339208389216015
+    second: born_5_11
+  - first:
+      213: -2857184797629584595
+    second: born_5_12
+  - first:
+      213: 6156112413225718611
+    second: born_5_13
+  - first:
+      213: 2253808702211088678
+    second: born_5_14
+  - first:
+      213: -929405672343079397
+    second: born_5_15
+  - first:
+      213: 9120191998445643952
+    second: born_5_16
+  - first:
+      213: -9160215334189064024
+    second: born_5_17
+  - first:
+      213: -2776978744163617327
+    second: born_5_18
+  - first:
+      213: 6223050948141628898
+    second: born_5_19
+  - first:
+      213: 8171477490632878629
+    second: born_5_20
+  - first:
+      213: -4059143473830933423
+    second: born_5_21
+  - first:
+      213: -2269806100463410200
+    second: born_5_22
+  - first:
+      213: -339565150658482229
+    second: born_5_23
+  - first:
+      213: -2732454911378278585
+    second: born_5_24
+  - first:
+      213: 9045483446337348653
+    second: born_5_25
+  - first:
+      213: -1805615742324326160
+    second: born_5_26
+  - first:
+      213: -5610459030083186320
+    second: born_5_27
+  - first:
+      213: -3063659456333596020
+    second: born_5_28
+  - first:
+      213: -8865248968947292137
+    second: born_5_29
+  - first:
+      213: -1738715270833982760
+    second: born_5_30
+  - first:
+      213: -8489328037164950739
+    second: born_5_31
+  - first:
+      213: -5530270186790477659
+    second: born_5_32
+  - first:
+      213: 3355702741115430065
+    second: born_5_33
+  - first:
+      213: -8913138453369548334
+    second: born_5_34
+  - first:
+      213: 3778757807847299769
+    second: born_5_35
+  - first:
+      213: 3775170657239556636
+    second: born_5_36
+  - first:
+      213: 2323470799564115153
+    second: born_5_37
+  - first:
+      213: -52038218670767811
+    second: born_5_38
+  - first:
+      213: -6288465155660250536
+    second: born_5_39
+  - first:
+      213: 630678746808297717
+    second: born_5_40
+  - first:
+      213: -7075037504181805332
+    second: born_5_41
+  - first:
+      213: -5393727674767358318
+    second: born_5_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: born_5_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1037
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15162698477d1730800000000000000
+      internalID: 3971461600051074334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 1747
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103aff7a46f12e390800000000000000
+      internalID: -7790629888221797631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 949
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11ba3e083b1325f10800000000000000
+      internalID: 2256921010297350929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 942
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea488ea14fef9410800000000000000
+      internalID: 1486169467435633383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_4
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 935
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d03c6f426a4e8a8a0800000000000000
+      internalID: -6293529077014412531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_5
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 927
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4cc61233952fb7e0800000000000000
+      internalID: -1747636816265687985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_6
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 850
+        width: 79
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa192155f2bac7ee0800000000000000
+      internalID: -1261945575791488598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_7
+      rect:
+        serializedVersion: 2
+        x: 1902
+        y: 885
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acaaae84fa4093ed0800000000000000
+      internalID: -2433908972727915830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 865
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd7678734682dc60800000000000000
+      internalID: 7841477525547417040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_9
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 839
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed130892420d65b0800000000000000
+      internalID: -5373636295341695513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_10
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 818
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085f1e80283be1ba0800000000000000
+      internalID: -6116253872846408320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_11
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 827
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f074eb885c4596c00800000000000000
+      internalID: 894339208389216015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_12
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 797
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b64a7809d3958d0800000000000000
+      internalID: -2857184797629584595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_13
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 651
+        width: 129
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35311b39f97ee6550800000000000000
+      internalID: 6156112413225718611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 771
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 621e9fec213274f10800000000000000
+      internalID: 2253808702211088678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_15
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 777
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16f1c717761a13f0800000000000000
+      internalID: -929405672343079397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_16
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 766
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b866be3d4e619e70800000000000000
+      internalID: 9120191998445643952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 621
+        width: 149
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a0239bbfa060e080800000000000000
+      internalID: -9160215334189064024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_18
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 718
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d531559b803679d0800000000000000
+      internalID: -2776978744163617327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_19
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 600
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2edb32fbdd7bc5650800000000000000
+      internalID: 6223050948141628898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_20
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 650
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ae54fbb7be66170800000000000000
+      internalID: 8171477490632878629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_21
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 634
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c46fd44860ba7c0800000000000000
+      internalID: -4059143473830933423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 618
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e32dd8a0670080e0800000000000000
+      internalID: -2269806100463410200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_23
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 602
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf26e86b4f994bf0800000000000000
+      internalID: -339565150658482229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_24
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 601
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747b68a3cbe541ad0800000000000000
+      internalID: -2732454911378278585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_25
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 571
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d242d98f443088d70800000000000000
+      internalID: 9045483446337348653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_26
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 557
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0c7e58c0a21f6e0800000000000000
+      internalID: -1805615742324326160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_27
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 538
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0715205dc35a322b0800000000000000
+      internalID: -5610459030083186320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_28
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 424
+        width: 100
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8a3878d4f1bb75d0800000000000000
+      internalID: -3063659456333596020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_29
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 547
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 718af78680f48f480800000000000000
+      internalID: -8865248968947292137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_30
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 506
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d2b46c5ca7ded7e0800000000000000
+      internalID: -1738715270833982760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_31
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 316
+        width: 136
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2bd40be029df2a80800000000000000
+      internalID: -8489328037164950739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_32
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 404
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a0ab64d0988043b0800000000000000
+      internalID: -5530270186790477659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_33
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 381
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b46dff1dd9d19e20800000000000000
+      internalID: 3355702741115430065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_34
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 313
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d1980deccb2e4480800000000000000
+      internalID: -8913138453369548334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_35
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 297
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bad8fc9438d07430800000000000000
+      internalID: 3778757807847299769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_36
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 288
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c12ed3706b9146430800000000000000
+      internalID: 3775170657239556636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_37
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 270
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc0306c160ae3020800000000000000
+      internalID: 2323470799564115153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_38
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 274
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31826d048f174ff0800000000000000
+      internalID: -52038218670767811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_39
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 171
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85203763242eab8a0800000000000000
+      internalID: -6288465155660250536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_40
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 108
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8a5ee8afe90c800800000000000000
+      internalID: 630678746808297717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_41
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 85
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee5da600ea60dd90800000000000000
+      internalID: -7075037504181805332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: born_5_42
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 42
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2964c4ac141a525b0800000000000000
+      internalID: -5393727674767358318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      born_5_0: 3971461600051074334
+      born_5_1: -7790629888221797631
+      born_5_10: -6116253872846408320
+      born_5_11: 894339208389216015
+      born_5_12: -2857184797629584595
+      born_5_13: 6156112413225718611
+      born_5_14: 2253808702211088678
+      born_5_15: -929405672343079397
+      born_5_16: 9120191998445643952
+      born_5_17: -9160215334189064024
+      born_5_18: -2776978744163617327
+      born_5_19: 6223050948141628898
+      born_5_2: 2256921010297350929
+      born_5_20: 8171477490632878629
+      born_5_21: -4059143473830933423
+      born_5_22: -2269806100463410200
+      born_5_23: -339565150658482229
+      born_5_24: -2732454911378278585
+      born_5_25: 9045483446337348653
+      born_5_26: -1805615742324326160
+      born_5_27: -5610459030083186320
+      born_5_28: -3063659456333596020
+      born_5_29: -8865248968947292137
+      born_5_3: 1486169467435633383
+      born_5_30: -1738715270833982760
+      born_5_31: -8489328037164950739
+      born_5_32: -5530270186790477659
+      born_5_33: 3355702741115430065
+      born_5_34: -8913138453369548334
+      born_5_35: 3778757807847299769
+      born_5_36: 3775170657239556636
+      born_5_37: 2323470799564115153
+      born_5_38: -52038218670767811
+      born_5_39: -6288465155660250536
+      born_5_4: -6293529077014412531
+      born_5_40: 630678746808297717
+      born_5_41: -7075037504181805332
+      born_5_42: -5393727674767358318
+      born_5_5: -1747636816265687985
+      born_5_6: -1261945575791488598
+      born_5_7: -2433908972727915830
+      born_5_8: 7841477525547417040
+      born_5_9: -5373636295341695513
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
