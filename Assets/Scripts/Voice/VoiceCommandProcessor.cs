@@ -4,10 +4,6 @@ using System.Linq;
 using F23.StringSimilarity;
 using UnityEngine;
 
-/// <summary>
-/// Обработчик голосовых команд - теперь без зависимости от VoiceSystemManager.Instance
-/// Работает напрямую с переданным менеджером
-/// </summary>
 public class VoiceCommandProcessor
 {
     private readonly List<string> _allNames;

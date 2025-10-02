@@ -93,6 +93,7 @@ public class EnemyController : MonoBehaviourPun
         // Инициализация компонентов
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
+        _rb.freezeRotation = true;
         _animator = GetComponent<Animator>();
         _detectorEnemy = GetComponent<Detector>();
         _hp = GetComponent<HeatPointsController>();
