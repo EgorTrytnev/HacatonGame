@@ -453,7 +453,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8cb4d96ee37e94a5ea333e153fb0433e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118966,6 +118966,7 @@ GameObject:
   - component: {fileID: 1862431286}
   - component: {fileID: 1862431288}
   - component: {fileID: 1862431289}
+  - component: {fileID: 1862431290}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Spawner
@@ -119071,7 +119072,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 670859671, guid: b631ed305dfd43c488e0f8edf5c829bc, type: 3}
+  m_Sprite: {fileID: -1105864120121728082, guid: 4ad143c1bfece4f91b0555324b37f780, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119096,6 +119097,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allMobs:
   - {fileID: 6046698800023937107, guid: dbd88d6489ab84fe19a14155f50680eb, type: 3}
+--- !u!95 &1862431290
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862431285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04b52fcf4893f4171bf7857adc8af31e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1941487560
 GameObject:
   m_ObjectHideFlags: 0
