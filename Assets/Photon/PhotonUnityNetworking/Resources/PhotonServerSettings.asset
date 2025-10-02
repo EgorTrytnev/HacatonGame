@@ -52,6 +52,7 @@ MonoBehaviour:
   - RPC_TakeDamage
   - RPC_OnGotHit
   - RPC_SetHp
+  - RPC_MoveToPoint
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

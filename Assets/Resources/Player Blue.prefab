@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -4865967999112361731}
   - component: {fileID: 1740976565234419664}
   - component: {fileID: 4291151250907760294}
+  - component: {fileID: 8997787809894022819}
   m_Layer: 0
   m_Name: Player Blue
   m_TagString: Player
@@ -302,6 +303,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInit
   cameraPrefab: {fileID: 2426468115656337177, guid: dda2c045508104abc865375c5c2a362e, type: 3}
+--- !u!114 &8997787809894022819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516064816129472899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa39f49989fbba74bb07b2bcaa54f88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoiceSystemManager
+  availableNames:
+  - "\u0436\u0443\u0436\u0430"
+  - "\u043A\u0438\u0441\u0430"
+  - "\u0446\u044B\u043F\u0430"
+  - "\u0437\u0430\u044F"
+  - "\u044F\u0439\u0446\u0435\u043A\u0443\u0441"
+  commandList:
+  - spokenWord: "\u0431\u0430\u0437\u0430"
+    actionName: GoToBase
+  - spokenWord: "\u043C\u0438\u0434"
+    actionName: GoToMid
+  - spokenWord: "\u043B\u043E\u0433\u043E\u0432\u043E"
+    actionName: GoToLair
+  - spokenWord: "\u0441\u043B\u0435\u0434\u0443\u0439"
+    actionName: FollowMe
+  - spokenWord: "\u0441\u0442\u043E\u0439"
+    actionName: StopFollow
+  - spokenWord: "\u0430\u0442\u0430\u043A\u0443\u0439"
+    actionName: AttackEnemy
+  - spokenWord: "\u043F\u0430\u0442\u0440\u0443\u043B\u044C"
+    actionName: Patrol
 --- !u!1 &1230167539547563543
 GameObject:
   m_ObjectHideFlags: 0

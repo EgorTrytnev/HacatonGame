@@ -29,7 +29,7 @@ public class ConnectToWorld : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("SampleScene");
+        PhotonNetwork.LoadLevel("MainGame");
         Debug.Log("Joined the game");
     }
 

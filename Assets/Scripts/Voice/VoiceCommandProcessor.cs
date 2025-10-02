@@ -4,15 +4,16 @@ using System.Linq;
 using F23.StringSimilarity;
 using UnityEngine;
 
+/// <summary>
+/// Обработчик голосовых команд - теперь без зависимости от VoiceSystemManager.Instance
+/// Работает напрямую с переданным менеджером
+/// </summary>
 public class VoiceCommandProcessor
 {
     private readonly List<string> _allNames;
-
     private readonly Queue<string> _availableNames;
-
     private readonly Dictionary<string, string> _nameToId;
     private readonly Dictionary<string, string> _idToName;
-
     private readonly Dictionary<string, string> _commands;
     private readonly JaroWinkler _similarity = new();
     private readonly double _nameThreshold;
@@ -50,20 +51,18 @@ public class VoiceCommandProcessor
         foreach (string id in newIds)
         {
             if (string.IsNullOrWhiteSpace(id)) continue;
-
             if (_idToName.ContainsKey(id)) continue;
 
             if (_availableNames.Count == 0)
             {
-                Console.WriteLine($"⚠️ Нет свободных имён для юнита {id}");
+                Debug.LogWarning($"⚠️ Нет свободных имён для юнита {id}");
                 continue;
             }
 
             string assignedName = _availableNames.Dequeue();
             _idToName[id] = assignedName;
             _nameToId[assignedName] = id;
-
-            Console.WriteLine($"✅ Юнит {id} получил имя: '{assignedName}'");
+            Debug.Log($"✅ Юнит {id} получил имя: '{assignedName}'");
         }
     }
 
@@ -73,12 +72,12 @@ public class VoiceCommandProcessor
 
         foreach (string id in idsToRemove)
         {
-            if (_idToName.TryGetValue(id, out string? name) && name != null)
+            if (_idToName.TryGetValue(id, out string name) && name != null)
             {
                 _idToName.Remove(id);
                 _nameToId.Remove(name);
                 _availableNames.Enqueue(name);
-                Console.WriteLine($"🗑 Юнит {id} удалён, имя '{name}' освобождено");
+                Debug.Log($"🗑 Юнит {id} удалён, имя '{name}' освобождено");
             }
         }
     }
@@ -88,9 +87,9 @@ public class VoiceCommandProcessor
         return new Dictionary<string, string>(_nameToId);
     }
 
-    private string? FindBestMatch(string input, Dictionary<string, string> dictionary, double threshold)
+    private string FindBestMatch(string input, Dictionary<string, string> dictionary, double threshold)
     {
-        string? bestKey = null;
+        string bestKey = null;
         double bestScore = 0.0;
 
         foreach (string key in dictionary.Keys)
@@ -106,17 +105,22 @@ public class VoiceCommandProcessor
         return bestKey;
     }
 
-    public void ProcessQueue(Queue<string> queue)
+    /// <summary>
+    /// Обработка очереди команд с передачей VoiceSystemManager
+    /// </summary>
+    public void ProcessQueue(Queue<string> queue, VoiceSystemManager voiceManager)
     {
         if (queue == null) throw new ArgumentNullException(nameof(queue));
+        if (voiceManager == null) throw new ArgumentNullException(nameof(voiceManager));
 
         while (queue.Count > 0)
         {
             string line = queue.Dequeue();
             if (string.IsNullOrWhiteSpace(line)) continue;
 
-            string[] words = line.Split(new char[] { ' ', '\t', ',', '.' }, 
-                                    StringSplitOptions.RemoveEmptyEntries);
+            string[] words = line.Split(new char[] { ' ', '\t', ',', '.' },
+                StringSplitOptions.RemoveEmptyEntries);
+
             if (words.Length == 0) continue;
 
             var matchedNames = new List<string>();
@@ -125,14 +129,14 @@ public class VoiceCommandProcessor
 
             foreach (string word in words)
             {
-                string? matchedName = FindBestMatch(word, _nameToId, _nameThreshold);
+                string matchedName = FindBestMatch(word, _nameToId, _nameThreshold);
                 if (matchedName != null)
                 {
                     matchedNames.Add(matchedName);
                     continue;
                 }
 
-                string? matchedCmd = FindBestMatch(word, _commands, _commandThreshold);
+                string matchedCmd = FindBestMatch(word, _commands, _commandThreshold);
                 if (matchedCmd != null)
                 {
                     matchedActions.Add(_commands[matchedCmd]);
@@ -142,50 +146,80 @@ public class VoiceCommandProcessor
                 unmatchedWords.Add(word);
             }
 
-            if (matchedNames.Count > 0 && matchedActions.Count == 0)
-            {
-                foreach (string name in matchedNames)
-                {
-                    string id = _nameToId[name];
-                    VoiceSystemManager.Instance.SetAwaitingCommand(id, true);
-                }
-                Debug.Log($"📢 Активировано ожидание для: {string.Join(", ", matchedNames)}");
-                return;
-            }
-
-            if (matchedActions.Count > 0 && matchedNames.Count == 0)
-            {
-                var awaiting = VoiceSystemManager.Instance.GetAwaitingUnits();
-                if (awaiting.Count > 0)
-                {
-                    foreach (string id in awaiting)
-                    {
-                        VoiceCommandBroadcaster.Broadcast(id, matchedActions.ToArray());
-                    }
-                    foreach (string id in awaiting)
-                    {
-                        VoiceSystemManager.Instance.SetAwaitingCommand(id, false);
-                    }
-                    Debug.Log($"📤 Команда применена к ожидающим: {string.Join(", ", awaiting)}");
-                }
-                else
-                {
-                    Debug.Log("⚠️ Команда без имени, но никто не ожидает");
-                }
-                return;
-            }
-
-            if (matchedNames.Count > 0 && matchedActions.Count > 0)
-            {
-                foreach (string name in matchedNames)
-                {
-                    string id = _nameToId[name];
-                    VoiceCommandBroadcaster.Broadcast(id, matchedActions.ToArray());
-
-                    VoiceSystemManager.Instance.SetAwaitingCommand(id, false);
-                }
-                Debug.Log($"✅ Прямая команда: {string.Join(", ", matchedNames)} → {string.Join(", ", matchedActions)}");
-            }
+            // Обработка результатов
+            ProcessParsedCommand(matchedNames, matchedActions, voiceManager);
         }
+    }
+
+    /// <summary>
+    /// Обработка распарсенной команды
+    /// </summary>
+    private void ProcessParsedCommand(List<string> matchedNames, List<string> matchedActions, VoiceSystemManager voiceManager)
+    {
+        // Только имена - активируем ожидание
+        if (matchedNames.Count > 0 && matchedActions.Count == 0)
+        {
+            foreach (string name in matchedNames)
+            {
+                string id = _nameToId[name];
+                voiceManager.SetAwaitingCommand(id, true);
+            }
+            Debug.Log($"📢 Активировано ожидание для: {string.Join(", ", matchedNames)}");
+            return;
+        }
+
+        // Только действия - применяем к ожидающим
+        if (matchedActions.Count > 0 && matchedNames.Count == 0)
+        {
+            var awaiting = voiceManager.GetAwaitingUnits();
+            if (awaiting.Count > 0)
+            {
+                foreach (string id in awaiting)
+                {
+                    VoiceCommandBroadcaster.Broadcast(id, matchedActions.ToArray());
+                }
+
+                foreach (string id in awaiting)
+                {
+                    voiceManager.SetAwaitingCommand(id, false);
+                }
+
+                Debug.Log($"📤 Команда применена к ожидающим: {string.Join(", ", awaiting)}");
+            }
+            else
+            {
+                Debug.Log("⚠️ Команда без имени, но никто не ожидает");
+            }
+            return;
+        }
+
+        // Имена и действия - прямая команда
+        if (matchedNames.Count > 0 && matchedActions.Count > 0)
+        {
+            foreach (string name in matchedNames)
+            {
+                string id = _nameToId[name];
+                VoiceCommandBroadcaster.Broadcast(id, matchedActions.ToArray());
+                voiceManager.SetAwaitingCommand(id, false);
+            }
+            Debug.Log($"✅ Прямая команда: {string.Join(", ", matchedNames)} → {string.Join(", ", matchedActions)}");
+        }
+    }
+
+    /// <summary>
+    /// Получить все доступные команды
+    /// </summary>
+    public Dictionary<string, string> GetCommands()
+    {
+        return new Dictionary<string, string>(_commands);
+    }
+
+    /// <summary>
+    /// Получить статистику процессора
+    /// </summary>
+    public string GetStats()
+    {
+        return $"Имен: {_allNames.Count}, Доступно: {_availableNames.Count}, " +
+               $"Назначено: {_nameToId.Count}, Команд: {_commands.Count}";
     }
 }
