@@ -1,267 +1,370 @@
 using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PhotonView))]
+public class EnemyController : MonoBehaviourPun
 {
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
-    private Animator animator;
-    private Detector detectorEnemy;
-    private HeatPointsController heatPointsController;
+    private Animator _animator;
+    private Detector _detectorEnemy;
+    private HeatPointsController _hp;
 
+    // Patrol / move
     private Vector2 centerPoint;
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float multiplySpeed = 1.5f;
+
+    // Combat
     [SerializeField] private int speedAttack = 5;
 
+    // Targets
     private Transform target;
+    private Transform currentAttacker;
     [SerializeField] private float stopRadiusPlayer = 2f;
     [SerializeField] private float stopRadiusEnemy = 0.3f;
-    private bool isFollowPlayer = false;
+    [SerializeField] private float pursuitRadius = 6f;
 
+    // Steering
+    [SerializeField] private float slowRadius = 3f;
+    [SerializeField] private float seekWeight = 1.0f;
+    [SerializeField] private float fleeWeight = 1.6f;
+    [SerializeField] private float dangerRadius = 2.0f;
+
+    // States
+    private bool isFollowPlayer = false;
     private bool isRandAction = true;
     private bool isAttacking = false;
 
+    // Movement
+    private Vector2 desiredVelocity = Vector2.zero;
+
     private Coroutine attackCoroutine;
+    private Coroutine patrolCoroutine;
+
+    // NEW: anti-stick windows
+    [SerializeField] private float followLockDuration = 1.5f;   // после Follow: не переходить в погоню
+    [SerializeField] private float reaggroBlockDuration = 0.8f; // сразу после отмены: не ре-агриться
+    private float followLockUntil = -1f;
+    private float reaggroBlockUntil = -1f;
+
+    bool HasAuth => photonView.IsMine; // ИИ/физика только у владельца [PUN ownership]
 
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        detectorEnemy = GetComponent<Detector>();
-        heatPointsController = GetComponent<HeatPointsController>();
+        _animator = GetComponent<Animator>();
+        _detectorEnemy = GetComponent<Detector>();
+        _hp = GetComponent<HeatPointsController>();
 
         centerPoint = transform.position;
+        _rb.gravityScale = 0f;
+        _rb.freezeRotation = true;
 
-        StartCoroutine(EnemyMove());
+        if (HasAuth)
+            patrolCoroutine = StartCoroutine(WanderPatrol());
     }
 
+    void Update()
+    {
+        if (!HasAuth) return;
+
+        if (isRandAction) return;
+
+        if (target == null)
+        {
+            StopAttack();
+            SetMovementActive(true);
+            return;
+        }
+
+        if (isFollowPlayer) FollowToPlayer_Steering();
+        else FollowToEnemy();
+    }
+
+    void FixedUpdate()
+    {
+        if (!HasAuth) return;
+        _rb.linearVelocity = desiredVelocity;
+    }
+
+    // ---------- Patrol ----------
     private Vector2 GetNewTargetPosition()
     {
-
         Vector2 randomOffset = Random.insideUnitCircle * maxDistance;
-        Vector2 targetPos = centerPoint + randomOffset;
-        return targetPos;
+        return centerPoint + randomOffset;
     }
 
-    IEnumerator EnemyMove()
+    IEnumerator WanderPatrol()
     {
         while (true)
         {
             if (!isRandAction)
             {
-                _rb.linearVelocity = Vector2.zero;
+                desiredVelocity = Vector2.zero;
                 yield return null;
                 continue;
             }
 
             Vector2 targetPos = GetNewTargetPosition();
-            Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
-
             float distance = Vector2.Distance(transform.position, targetPos);
 
             while (distance > 0.1f)
             {
-                if (!isRandAction)
-                {
-                    _rb.linearVelocity = Vector2.zero;
-                    break;
-                }
-
-                _rb.linearVelocity = direction * moveSpeed;
-                yield return null;
+                if (!isRandAction) break;
+                Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+                desiredVelocity = direction * moveSpeed;
                 distance = Vector2.Distance(transform.position, targetPos);
-                direction = (targetPos - (Vector2)transform.position).normalized;
+                yield return null;
             }
 
-            _rb.linearVelocity = Vector2.zero;
+            desiredVelocity = Vector2.zero;
 
             float waitTime = Random.Range(3f, 6f);
             float elapsed = 0f;
             while (elapsed < waitTime)
             {
-                if (!isRandAction)
-                    break;
+                if (!isRandAction) break;
                 elapsed += Time.deltaTime;
                 yield return null;
             }
+
+            centerPoint = transform.position;
         }
     }
 
+    // ---------- Public API ----------
     public void SetMainTarget(Transform newTarget)
     {
-        SetMovementActive(false);
-        target = newTarget;
-        isFollowPlayer = true;
+        int id = ToViewId(newTarget);
+        if (HasAuth) RPC_SetMainTarget(id);
+        else photonView.RPC(nameof(RPC_SetMainTarget), photonView.Owner, id);
     }
+
     public void DeleteMainTarget()
     {
-        SetMovementActive(true);
-        target = null;
-        isFollowPlayer = false;
+        if (HasAuth) RPC_DeleteMainTarget();
+        else photonView.RPC(nameof(RPC_DeleteMainTarget), photonView.Owner);
     }
 
     public void SetTargetEnemy()
     {
-        SetMovementActive(false);
-        target = detectorEnemy.DetectTarget();
-        isFollowPlayer = false;
-        if (target == null)
-        {
-            SetMovementActive(true);
-            target = null;
-            Debug.Log("Not found enemy");
-        }
-        Debug.Log("Set target - " + target.name);
-
+        if (HasAuth) RPC_SetTargetEnemyAuto();
+        else photonView.RPC(nameof(RPC_SetTargetEnemyAuto), photonView.Owner);
     }
+
     public void SetTargetEnemy(Transform targetEnemy)
     {
-        SetMovementActive(false);
-        target = targetEnemy;
-        isFollowPlayer = false;
+        int id = ToViewId(targetEnemy);
+        if (HasAuth) RPC_SetTargetEnemy(id);
+        else photonView.RPC(nameof(RPC_SetTargetEnemy), photonView.Owner, id);
     }
 
-    void Update()
+    // ---------- RPC (owner side) ----------
+    [PunRPC] void RPC_SetMainTarget(int targetViewId)
     {
-        if (isRandAction) return;
+        StopAttack();
+        SetMovementActive(false);
+        target = FromViewId(targetViewId);
+        isFollowPlayer = target != null;
+        currentAttacker = null;
 
-        if (target == null)
-        {
-            isRandAction = true;
-            StopAttack();
-            return;
-        }
         if (isFollowPlayer)
-            FollowToPlayer();
-        else
-            FollowToEnemy();
+            followLockUntil = Time.time + followLockDuration; // NEW: приказы важнее входящих ударов
     }
-    
+
+    [PunRPC] void RPC_DeleteMainTarget()
+    {
+        SetMovementActive(true);
+        target = null;
+        isFollowPlayer = false;
+        currentAttacker = null;
+
+        reaggroBlockUntil = Time.time + reaggroBlockDuration; // NEW: защита от мгновенного ре-агра
+    }
+
+    [PunRPC] void RPC_SetTargetEnemyAuto()
+    {
+        SetMovementActive(false);
+        target = _detectorEnemy != null ? _detectorEnemy.DetectTargetAuth() : null;
+        isFollowPlayer = false;
+        if (target == null) SetMovementActive(true);
+        else SetSpeedForLeaveFunc();
+    }
+
+    [PunRPC] void RPC_SetTargetEnemy(int targetViewId)
+    {
+        SetMovementActive(false);
+        target = FromViewId(targetViewId);
+        isFollowPlayer = false;
+        if (target == null) SetMovementActive(true);
+        else SetSpeedForLeaveFunc();
+    }
+
+    // ---------- Combat ----------
     void StopAttack()
     {
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
-            SetSpeedForLeave();
         }
         isAttacking = false;
     }
 
-
-
-    private void FollowToPlayer()
+    IEnumerator AttackAction()
     {
+        isAttacking = true;
+        yield return new WaitForSeconds(speedAttack);
+        if (isFollowPlayer || target == null) { isAttacking = false; yield break; }
 
-        if (target == null)
-            return;
+        // 1) Урон — адресно владельцу HP цели (RPC_TakeDamage на том же PV, где HP)
+        var hp = target.GetComponentInParent<HeatPointsController>();
+        var hpPv = hp ? hp.GetComponent<PhotonView>() : null;
+        if (hpPv != null)
+            hpPv.RPC("RPC_TakeDamage", hpPv.Owner, 1); // адресный RPC владельцу [docs]
 
-        Vector3 direction = target.position - transform.position;
-        float distance = direction.magnitude;
+        // 2) Реакция жертвы — адресно её EnemyController (anti-stick учитывается на стороне жертвы)
+        var victimEc = target.GetComponentInParent<EnemyController>();
+        var victimPv = victimEc ? victimEc.GetComponent<PhotonView>() : null;
+        if (victimPv != null)
+            victimPv.RPC(nameof(RPC_ReactByAttack), victimPv.Owner, photonView.ViewID, false);
 
-        if (distance > stopRadiusPlayer)
-        {
-            Vector3 moveDir = direction.normalized;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-
-        }
-    }
-
-    public void SetSpeedForLeaveFunc()
-    {
-        StartCoroutine(SetSpeedForLeave());
-    }
-
-    IEnumerator SetSpeedForLeave()
-    {
-        Debug.Log("LEEEEEAVE");
-        moveSpeed *= multiplySpeed;
-        yield return new WaitForSeconds(2f);
-        moveSpeed /= multiplySpeed;
-    }
-
-    private void FollowToEnemy()
-    {
-        if (target == null)
-        {
-            isRandAction = true;
-            return;
-        }
-
-        Vector3 direction = target.position - transform.position;
-        float distance = direction.magnitude;
-
-        if (distance > stopRadiusEnemy)
-        {
-            Vector3 moveDir = direction.normalized;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-        }
-        if (detectorEnemy.GetCanHit() && !isAttacking)
-        {
-            attackCoroutine = StartCoroutine(AttackAction());
-        }
-    }
-
-IEnumerator AttackAction()
-{
-    isAttacking = true;
-    yield return new WaitForSeconds(speedAttack);
-
-    if (target == null)
-        {
-            isAttacking = false;
-            yield break;
-        }
-
-    var hp = target.GetComponent<HeatPointsController>();
-    if (hp == null)
-    {
         isAttacking = false;
-        yield break;
     }
 
-    bool isDead = hp.TakeDamage(1);
-    if (!isDead)
+    // NEW: реакция на удар с учётом замков
+    [PunRPC]
+    void RPC_ReactByAttack(int attackerViewId, bool forceChase = false)
     {
-        var targetUnit = target.GetComponent<EnemyController>();
+        var attackerT = FromViewId(attackerViewId);
+        if (attackerT == null) return;
 
-        if (targetUnit != null)
-            targetUnit.ReactByAttack(gameObject.transform);
-        else
-            Debug.Log("Less");
+        // Если есть активный Follow-замок — не переключаемся в погоню, только ускоряем отход
+        if (!forceChase && isFollowPlayer && Time.time < followLockUntil)
+        {
+            currentAttacker = attackerT;
+            SetSpeedForLeaveFunc();
+            return;
+        }
+
+        // Если только что отменили бой — коротко игнорируем ре-агр
+        if (!forceChase && Time.time < reaggroBlockUntil)
+        {
+            currentAttacker = attackerT;
+            return;
+        }
+
+        // Стандартная погоня за обидчиком
+        isFollowPlayer = false;
+        SetMovementActive(false);
+        SetTargetEnemy(attackerT);
     }
-
-    isAttacking = false;
-}
-
-    public void ReactByAttack(Transform attacker)
-    {
-        // При атаке начинаем преследовать атаковавшего
-        SetTargetEnemy(attacker);
-    }
-
-    
 
     public void SetMovementActive(bool active)
     {
         isRandAction = active;
-        if (!active)
-            _rb.linearVelocity = Vector2.zero;
-        else
+        desiredVelocity = Vector2.zero;
+
+        if (!HasAuth) return;
+
+        if (active)
+        {
+            if (patrolCoroutine == null)
+                patrolCoroutine = StartCoroutine(WanderPatrol());
             centerPoint = transform.position;
+        }
+        else
+        {
+            if (patrolCoroutine != null)
+            {
+                StopCoroutine(patrolCoroutine);
+                patrolCoroutine = null;
+            }
+            _rb.linearVelocity = Vector2.zero;
+        }
     }
 
-    void OnDrawGizmosSelected()
+    public void SetSpeedForLeaveFunc() => StartCoroutine(SpeedBoost());
+
+    public IEnumerator SpeedBoost()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(centerPoint, maxDistance);
+        float originalSpeed = moveSpeed;
+        moveSpeed = originalSpeed * multiplySpeed;
+        yield return new WaitForSeconds(2f);
+        moveSpeed = originalSpeed;
     }
-    
 
+    private void FollowToPlayer_Steering()
+    {
+        if (target == null) { desiredVelocity = Vector2.zero; return; }
+
+        Vector2 pos = _rb.position;
+        Vector2 toPlayer = (Vector2)target.position - pos;
+        float distToPlayer = toPlayer.magnitude;
+
+        if (distToPlayer <= stopRadiusPlayer)
+        {
+            desiredVelocity = Vector2.zero;
+            currentAttacker = null;
+            return;
+        }
+
+        Vector2 dirSeek = toPlayer.sqrMagnitude > 0.0001f ? toPlayer.normalized : Vector2.zero;
+
+        Vector2 dirFlee = Vector2.zero;
+        float wFlee = fleeWeight;
+
+        if (currentAttacker != null)
+        {
+            Vector2 fromAttacker = pos - (Vector2)currentAttacker.position;
+            if (fromAttacker.sqrMagnitude > 0.0001f) dirFlee = fromAttacker.normalized;
+            float dA = fromAttacker.magnitude;
+            if (dA < dangerRadius) wFlee *= 1.5f;
+        }
+
+        Vector2 blended = (seekWeight * dirSeek) + (wFlee * dirFlee);
+        if (blended.sqrMagnitude > 0.0001f) blended.Normalize();
+
+        float slowFactor = distToPlayer < slowRadius ? (distToPlayer / slowRadius) : 1f;
+        desiredVelocity = blended * moveSpeed * slowFactor;
+    }
+
+    private void FollowToEnemy()
+    {
+        if (target == null) { SetMovementActive(true); return; }
+
+        float distToTarget = Vector2.Distance(transform.position, target.position);
+        if (distToTarget > pursuitRadius)
+        {
+            StopAttack();
+            target = null;
+            SetMovementActive(true);
+            return;
+        }
+
+        Vector2 toEnemy = (Vector2)target.position - _rb.position;
+        float distance = toEnemy.magnitude;
+
+        desiredVelocity = (distance > stopRadiusEnemy)
+            ? (distance > 0.0001f ? toEnemy.normalized * moveSpeed : Vector2.zero)
+            : Vector2.zero;
+
+        if (_detectorEnemy != null && _detectorEnemy.GetCanHitAuth() && !isAttacking)
+            attackCoroutine = StartCoroutine(AttackAction());
+    }
+
+    // helpers: ViewID <-> Transform
+    static int ToViewId(Transform t)
+    {
+        if (t == null) return 0;
+        var pv = t.GetComponentInParent<PhotonView>();
+        return pv != null ? pv.ViewID : 0;
+    }
+    static Transform FromViewId(int id) => id != 0 ? PhotonView.Find(id)?.transform : null;
 }

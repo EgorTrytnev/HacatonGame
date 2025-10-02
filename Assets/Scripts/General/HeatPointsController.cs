@@ -1,79 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeatPointsController : MonoBehaviour
+[RequireComponent(typeof(PhotonView))]
+public class HeatPointsController : MonoBehaviourPun
 {
     [SerializeField] private int HP = 10;
-    private int curHP;
-    [SerializeField] private float healthTime = 10;
+    [SerializeField] private float healthTime = 10f;
     [SerializeField] private Slider slider;
-    private float curHealthTime;
-    private bool isDead = false;
 
+    private int curHP;
+    private float curHealthTime;
+    private bool isDead;
 
     void Start()
     {
         curHP = HP;
         curHealthTime = healthTime;
-        slider.maxValue = HP;
+        if (slider) { slider.maxValue = HP; slider.value = HP; }
     }
 
     void Update()
     {
-        KeepTrackHP();
-        checkActive();
-    }
+        if (isDead) return;
 
-    private void KeepTrackHP()
-    {
-        curHealthTime -= Time.deltaTime;
-        if (curHealthTime <= 0)
+        if (photonView.IsMine)
         {
-            if (curHP != HP)
+            curHealthTime -= Time.deltaTime;
+            if (curHP < HP && curHealthTime <= 0f)
             {
-                HealthHP(1);
+                ApplyHealLocal(1);
+                // сообщить другим о новом значении
+                photonView.RPC(nameof(RPC_SetHp), RpcTarget.Others, curHP);
                 curHealthTime = healthTime;
             }
         }
+
+        if (slider) slider.value = curHP;
     }
 
-    public bool TakeDamage(int damage)
+    void ApplyHealLocal(int amount)
     {
+        curHP = Mathf.Min(HP, curHP + amount);
+    }
+
+    // Вызывается владельцу цели
+    [PunRPC]
+    public void RPC_TakeDamage(int damage, PhotonMessageInfo info)
+    {
+        if (!photonView.IsMine) return;
+        if (isDead) return;
+
         curHP -= damage;
-        slider.value += damage;
-        return CheckHP();
+        // разослать новое HP другим
+        photonView.RPC(nameof(RPC_SetHp), RpcTarget.Others, curHP);
 
-        
-    }
-    public void HealthHP(int hp)
-    {
-        curHP += hp;
-        slider.value -= hp;
-    }
-
-    private bool CheckHP()
-    {
         if (curHP <= 0)
         {
-            Debug.Log("Death: " + gameObject.name);
-            gameObject.SetActive(false);
-            return true;
-        }
-        return false;
-    }
-
-    private void checkActive()
-    {
-        if (!gameObject.activeSelf)
-        {
-            Destroy(gameObject);
+            isDead = true;
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
-    public bool GetIsDead()
+    [PunRPC]
+    void RPC_SetHp(int newHp)
     {
-        return isDead;
+        // выполняется у НЕ владельцев, но можно и у всех
+        curHP = newHp;
+        if (slider) slider.value = curHP;
     }
 }

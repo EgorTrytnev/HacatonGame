@@ -14,6 +14,11 @@ public class CameraController : MonoBehaviour
     Vector3 curVelCam = Vector3.zero;
     Vector3 curVelText = Vector3.zero;
 
+    void Start()
+    {
+        infoText = GameObject.Find("InfoMobSpawn").GetComponent<RectTransform>();
+    }
+
 
     void Update()
     {
@@ -21,6 +26,11 @@ public class CameraController : MonoBehaviour
         Vector3 screenPos = Camera.main.WorldToScreenPoint(player.position);
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref curVelCam, speedDumpCam);
         Vector3 targetPersText = screenPos + offsetText;
-        infoText.position = Vector3.SmoothDamp(infoText.position, targetPersText, ref curVelText, speedDumpText); 
+        infoText.position = Vector3.SmoothDamp(infoText.position, targetPersText, ref curVelText, speedDumpText);
+    }
+
+    public void SetPlayer(Transform player)
+    {
+        this.player = player;
     }
 }

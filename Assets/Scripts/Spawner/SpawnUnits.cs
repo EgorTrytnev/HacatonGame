@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Photon.Pun;
 
 public class SpawnUnits : MonoBehaviour
 {
+    [SerializeField] private GameObject[] allMobs; // ссылки на префабы в Resources
 
-    [SerializeField] private GameObject[] allMobs;
-    public GameObject SpawnUnit(Transform pos, string Name = "default")
+    public GameObject SpawnUnit(Transform pos, string name = "default", object[] instantiationData = null)
     {
         foreach (GameObject unit in allMobs)
         {
-            UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
-            if (unitName.GetUnitName().ToLower() == Name.ToLower())
+            var unitDef = unit.GetComponent<UnitsDefinition>();
+            if (unitDef != null && string.Equals(unitDef.GetUnitName(), name, StringComparison.OrdinalIgnoreCase))
             {
-                Debug.Log("In Spawner");
-                GameObject retUnit = Instantiate(unit, pos.position, Quaternion.identity);
-                return retUnit;
+                // Важно: unit.name должен совпадать с именем префаба в Resources
+                return PhotonNetwork.Instantiate(unit.name, pos.position, Quaternion.identity, 0, instantiationData);
             }
         }
+        Debug.LogWarning($"SpawnUnits: префаб для {name} не найден");
         return null;
     }
 }

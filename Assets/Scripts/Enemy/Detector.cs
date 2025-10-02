@@ -1,97 +1,55 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class Detector : MonoBehaviour
+public class Detector : MonoBehaviourPun
 {
-    [SerializeField]private float viewRadius = 10f;          // Радиус видимости
-    private float viewAngle = 360f;           
-
-    public LayerMask targetMask;            
+    [SerializeField] private float viewRadius = 10f;
+    private float viewAngle = 360f;
+    public LayerMask targetMask;
     public LayerMask obstacleMask;
-
     private bool canHit = false;
 
-
-
-    public Transform DetectTarget()
+    public Transform DetectTargetAuth()
     {
+        if (!photonView.IsMine) return null;
+
         Transform unitTransform = null;
-        // Проверяем, есть ли цель в радиусе
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
 
-        foreach (Collider2D target in targetsInViewRadius)
+        foreach (Collider2D c in targetsInViewRadius)
         {
-            Vector2 dirToTarget = (target.transform.position - transform.position).normalized;
+            Vector2 dirToTarget = (c.transform.position - transform.position).normalized;
+            float dist = Vector2.Distance(transform.position, c.transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToTarget, dist, obstacleMask);
 
-            float distToTarget = Vector2.Distance(transform.position, target.transform.position);
-
-            // Проверяем, есть ли преграда между персонажем и целью
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask);
-            var targetUnit = target.GetComponent<UnitsDefinition>();
-            var myUnit = gameObject.GetComponent<UnitsDefinition>();
-
-            if (targetUnit != null && myUnit != null)
+            var targetUnit = c.GetComponent<UnitsDefinition>();
+            var myUnit = GetComponent<UnitsDefinition>();
+            if (targetUnit != null && myUnit != null && hit.collider == null && targetUnit.GetTeam() != myUnit.GetTeam())
             {
-                if (hit.collider == null && targetUnit.GetTeam() != myUnit.GetTeam())
-                {
-                    Debug.Log("Цель обнаружена: " + target.name);
-                    unitTransform = target.gameObject.transform;
-                }
+                unitTransform = c.transform;
+                break;
             }
-            else if (myUnit == null)
-            {
-                Debug.LogWarning("Отсутствует компонент UnitsDefinition у цели или у детектора");
-            }
-            else
-            {
-                Debug.Log("His in my team");
-            }
-
-
         }
         return unitTransform;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!photonView.IsMine) return;
         var targetUnit = collision.GetComponent<UnitsDefinition>();
-        var myUnit = gameObject.GetComponent<UnitsDefinition>();
-        if (targetUnit != null && myUnit != null)
-        {
-            if (targetUnit != myUnit)
-            {
-                canHit = true;
-            }
-        }
-
+        var myUnit = GetComponent<UnitsDefinition>();
+        if (targetUnit != null && myUnit != null && targetUnit != myUnit)
+            canHit = true;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!photonView.IsMine) return;
         var targetUnit = collision.GetComponent<UnitsDefinition>();
-        var myUnit = gameObject.GetComponent<UnitsDefinition>();
-        if (targetUnit != null && myUnit != null)
-        {
-            if (targetUnit != myUnit)
-            {
-                canHit = false;
-            }
-        }
+        var myUnit = GetComponent<UnitsDefinition>();
+        if (targetUnit != null && myUnit != null && targetUnit != myUnit)
+            canHit = false;
     }
 
-    public bool GetCanHit()
-    {
-        return canHit;
-    }
-
-
-    // Для визуализации угла обзора в редакторе
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, viewRadius);
-
-        Vector3 leftBoundary = Quaternion.Euler(0, 0, -viewAngle / 2) * transform.right;
-        Vector3 rightBoundary = Quaternion.Euler(0, 0, viewAngle / 2) * transform.right;
-        Gizmos.DrawLine(transform.position, transform.position + leftBoundary * viewRadius);
-        Gizmos.DrawLine(transform.position, transform.position + rightBoundary * viewRadius);
-    }
+    public bool GetCanHitAuth() => photonView.IsMine && canHit;
 }

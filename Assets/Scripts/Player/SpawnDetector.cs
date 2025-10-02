@@ -1,93 +1,95 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class SpawnDetector : MonoBehaviour
+public class SpawnDetector : MonoBehaviourPun
 {
     private bool spawnAllowed = false;
-
-    private AnimText animText;
     private SpawnUnits spawnUnits;
-    private List<GameObject> myUnits;
+    private readonly List<int> myUnitViewIds = new List<int>();
 
-    void Start()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        animText = GetComponent<AnimText>();
-        myUnits = new List<GameObject>();
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Spawner"))
+        if (col.CompareTag("Spawner"))
         {
+            if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
             spawnAllowed = true;
-            animText.changeAlphaText();
-            spawnUnits = collision.gameObject.GetComponent<SpawnUnits>();
+            spawnUnits = col.GetComponent<SpawnUnits>();
         }
     }
-    void OnTriggerExit2D(Collider2D collision)
+
+    void OnTriggerExit2D(Collider2D col)
     {
-        if (collision.CompareTag("Spawner"))
+        if (col.CompareTag("Spawner"))
         {
+            if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
             spawnAllowed = false;
             spawnUnits = null;
         }
     }
 
-    public bool getSpawnAllowed()
+    public bool getSpawnAllowed() => spawnAllowed;
+
+    [PunRPC]
+    void RPC_SpawnMob(int teamId, string prefabName, Vector3 pos, PhotonMessageInfo info)
     {
-        return spawnAllowed;
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        var unit = PhotonNetwork.Instantiate(prefabName, pos, Quaternion.identity);
+        unit.GetComponent<UnitsDefinition>()?.SetTeam((CollorTeam)teamId);
+
+        var pv = unit.GetComponent<PhotonView>();
+        Player requester = PhotonNetwork.CurrentRoom?.GetPlayer(info.Sender.ActorNumber);
+        if (pv != null && requester != null) pv.TransferOwnership(requester);
+
+        photonView.RPC(nameof(RPC_RegisterUnit), RpcTarget.All, pv.ViewID, info.Sender.ActorNumber);
     }
 
-    public void SpawnMob(CollorTeam team, string Name = "default")
+    [PunRPC]
+    void RPC_RegisterUnit(int unitViewId, int ownerActorNumber)
     {
-        
-        if (spawnUnits != null)
+        if (photonView.Owner != null && photonView.Owner.ActorNumber == ownerActorNumber)
         {
-            Debug.Log("In Detector");
-            GameObject unit = spawnUnits.SpawnUnit(transform, Name);
-            unit.GetComponent<UnitsDefinition>().SetTeam(team);
-            myUnits.Add(unit);
-        }
-    }
-
-    public void FollowMe(string Name = "default")
-    {
-        foreach (GameObject unit in myUnits)
-        {
-            UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
-            if (unitName.GetUnitName().ToLower() == Name.ToLower())
-            {
-                unit.GetComponent<EnemyController>().SetMainTarget(transform);
-            }
-        }
-    }
-    public void StopFollowMe(string Name = "default")
-    {
-        foreach (GameObject unit in myUnits)
-        {
-            UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
-            if (unitName.GetUnitName().ToLower() == Name.ToLower())
-            {
-                unit.GetComponent<EnemyController>().DeleteMainTarget();
-            }
+            if (!myUnitViewIds.Contains(unitViewId))
+                myUnitViewIds.Add(unitViewId);
         }
     }
 
-    public void AtackEnemy(string Name = "default")
+    // Команды высокого уровня — обращаются к владельцам юнитов
+    public void CmdFollowMe(string unitName, int ownerViewId)
     {
-        foreach (GameObject unit in myUnits)
+        foreach (int id in myUnitViewIds)
         {
-            UnitsDefinition unitName = unit.GetComponent<UnitsDefinition>();
-            if (unitName.GetUnitName().ToLower() == Name.ToLower())
-            {
-                unit.GetComponent<EnemyController>().DeleteMainTarget();
-                unit.GetComponent<EnemyController>().SetTargetEnemy();
-            }
+            var pv = PhotonView.Find(id);
+            if (pv == null) continue;
+            var def = pv.GetComponent<UnitsDefinition>();
+            if (def != null && def.GetUnitName().ToLower() == unitName.ToLower())
+                pv.RPC("RPC_SetMainTarget", pv.Owner, ownerViewId);
         }
     }
-    public int UseTheCommand(string Command = "default", string NameUnit = "default")
+
+    public void CmdStopFollow(string unitName)
     {
-        return 0;
+        foreach (int id in myUnitViewIds)
+        {
+            var pv = PhotonView.Find(id);
+            if (pv == null) continue;
+            var def = pv.GetComponent<UnitsDefinition>();
+            if (def != null && def.GetUnitName().ToLower() == unitName.ToLower())
+                pv.RPC("RPC_DeleteMainTarget", pv.Owner);
+        }
+    }
+
+    public void CmdAttackEnemy(string unitName)
+    {
+        foreach (int id in myUnitViewIds)
+        {
+            var pv = PhotonView.Find(id);
+            if (pv == null) continue;
+            var def = pv.GetComponent<UnitsDefinition>();
+            if (def != null && def.GetUnitName().ToLower() == unitName.ToLower())
+                pv.RPC("RPC_SetTargetEnemyAuto", pv.Owner);
+        }
     }
 }
