@@ -1,0 +1,1248 @@
+fileFormatVersion: 2
+guid: fee3f87fbe74d164eb1207f125cba92b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9140966344239013558
+    second: greenborn5_0
+  - first:
+      213: 4927594162164894543
+    second: greenborn5_1
+  - first:
+      213: -6820432039716270230
+    second: greenborn5_2
+  - first:
+      213: -470973996285745913
+    second: greenborn5_3
+  - first:
+      213: -5552718117158563480
+    second: greenborn5_4
+  - first:
+      213: 2299355195742111546
+    second: greenborn5_5
+  - first:
+      213: 954762757200744368
+    second: greenborn5_6
+  - first:
+      213: -2699625673507637081
+    second: greenborn5_7
+  - first:
+      213: 320672551441343356
+    second: greenborn5_8
+  - first:
+      213: -5877517668701591935
+    second: greenborn5_9
+  - first:
+      213: 1677421253026764405
+    second: greenborn5_10
+  - first:
+      213: -3983034189541970460
+    second: greenborn5_11
+  - first:
+      213: 1588898302567899926
+    second: greenborn5_12
+  - first:
+      213: 6248377999114618396
+    second: greenborn5_13
+  - first:
+      213: -4068141545484432702
+    second: greenborn5_14
+  - first:
+      213: 1191797919032025508
+    second: greenborn5_15
+  - first:
+      213: 976125799900890853
+    second: greenborn5_16
+  - first:
+      213: 8304400059083760619
+    second: greenborn5_17
+  - first:
+      213: 7260381295441183507
+    second: greenborn5_18
+  - first:
+      213: 5796601814490564110
+    second: greenborn5_19
+  - first:
+      213: 5826363758751355733
+    second: greenborn5_20
+  - first:
+      213: 3024669416184310055
+    second: greenborn5_21
+  - first:
+      213: 9099824597347789374
+    second: greenborn5_22
+  - first:
+      213: -870260691993209802
+    second: greenborn5_23
+  - first:
+      213: 673668534699417243
+    second: greenborn5_24
+  - first:
+      213: 8776592347036448125
+    second: greenborn5_25
+  - first:
+      213: 5759631888720401672
+    second: greenborn5_26
+  - first:
+      213: -1437289137050999926
+    second: greenborn5_27
+  - first:
+      213: 1924586412693755848
+    second: greenborn5_28
+  - first:
+      213: -708626872388341506
+    second: greenborn5_29
+  - first:
+      213: 7778293443385901115
+    second: greenborn5_30
+  - first:
+      213: -720618501074897200
+    second: greenborn5_31
+  - first:
+      213: 8910538149520185948
+    second: greenborn5_32
+  - first:
+      213: 289485465088835625
+    second: greenborn5_33
+  - first:
+      213: -1172317872382824365
+    second: greenborn5_34
+  - first:
+      213: 5115108344590771518
+    second: greenborn5_35
+  - first:
+      213: 960442343133082115
+    second: greenborn5_36
+  - first:
+      213: 7421675478952782929
+    second: greenborn5_37
+  - first:
+      213: -104456971192352538
+    second: greenborn5_38
+  - first:
+      213: -97950363041957235
+    second: greenborn5_39
+  - first:
+      213: -5182434729468900629
+    second: greenborn5_40
+  - first:
+      213: -4302074480369466019
+    second: greenborn5_41
+  - first:
+      213: 1415904080006002151
+    second: greenborn5_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: greenborn5_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1037
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4125d37a83c42180800000000000000
+      internalID: -9140966344239013558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 1747
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b802178c4526440800000000000000
+      internalID: 4927594162164894543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 949
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6fc4023235f851a0800000000000000
+      internalID: -6820432039716270230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 942
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70521fc45a3c679f0800000000000000
+      internalID: -470973996285745913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_4
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 935
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86153e0ca48c0f2b0800000000000000
+      internalID: -5552718117158563480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_5
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 927
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3748a63e53f8ef10800000000000000
+      internalID: 2299355195742111546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_6
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 850
+        width: 79
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf09bb4bafff3d00800000000000000
+      internalID: 954762757200744368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_7
+      rect:
+        serializedVersion: 2
+        x: 1902
+        y: 885
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a87d00d0c0098ad0800000000000000
+      internalID: -2699625673507637081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 865
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7321ed8cf1437400800000000000000
+      internalID: 320672551441343356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_9
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 839
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186a5fb12dcde6ea0800000000000000
+      internalID: -5877517668701591935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_10
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 818
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576d9550eb5674710800000000000000
+      internalID: 1677421253026764405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_11
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 827
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed6d14f18b69b8c0800000000000000
+      internalID: -3983034189541970460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_12
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 797
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 613e7cc7696ec0610800000000000000
+      internalID: 1588898302567899926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_13
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 651
+        width: 129
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16c7935fa2b6b650800000000000000
+      internalID: 6248377999114618396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 771
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca446d71de0b87c0800000000000000
+      internalID: -4068141545484432702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_15
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 777
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a124f794ed1a8010800000000000000
+      internalID: 1191797919032025508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_16
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 766
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6cf274e35eb8d00800000000000000
+      internalID: 976125799900890853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 621
+        width: 149
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3ab6aead72f3370800000000000000
+      internalID: 8304400059083760619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_18
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 718
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31389a0325e02c460800000000000000
+      internalID: 7260381295441183507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_19
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 600
+        width: 102
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06481973aaa17050800000000000000
+      internalID: 5796601814490564110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_20
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 650
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553959c18f66bd050800000000000000
+      internalID: 5826363758751355733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_21
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 634
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72967a20fc8c9f920800000000000000
+      internalID: 3024669416184310055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 618
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ae6432242194e70800000000000000
+      internalID: 9099824597347789374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_23
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 602
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63452cfe2863ce3f0800000000000000
+      internalID: -870260691993209802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_24
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 601
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9edd1b86f9595900800000000000000
+      internalID: 673668534699417243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_25
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 571
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75f48f3d38bcc970800000000000000
+      internalID: 8776592347036448125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_26
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 557
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805113cdfa25eef40800000000000000
+      internalID: 5759631888720401672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_27
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 538
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a832c8a1529bd0ce0800000000000000
+      internalID: -1437289137050999926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_28
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 424
+        width: 100
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7972c352185ba10800000000000000
+      internalID: 1924586412693755848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_29
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 547
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef03ff03d937a26f0800000000000000
+      internalID: -708626872388341506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_30
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 506
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3044c3fcac02fb60800000000000000
+      internalID: 7778293443385901115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_31
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 316
+        width: 136
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d63bd09a49dff5f0800000000000000
+      internalID: -720618501074897200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_32
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 404
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a97b7ac3798ab70800000000000000
+      internalID: 8910538149520185948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_33
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 381
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920424a2f75740400800000000000000
+      internalID: 289485465088835625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_34
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 313
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 350b7c43b171bbfe0800000000000000
+      internalID: -1172317872382824365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_35
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 297
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3528fa30f38cf640800000000000000
+      internalID: 5115108344590771518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_36
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 288
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 302f0b1f83d245d00800000000000000
+      internalID: 960442343133082115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_37
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 270
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c2531c6861ff660800000000000000
+      internalID: 7421675478952782929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_38
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 274
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e044c920f4ec8ef0800000000000000
+      internalID: -104456971192352538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_39
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 171
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a734de9a204aef0800000000000000
+      internalID: -97950363041957235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_40
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 108
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beacb5e321b4418b0800000000000000
+      internalID: -5182434729468900629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_41
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 85
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d550e40bd06fb44c0800000000000000
+      internalID: -4302074480369466019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenborn5_42
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 42
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5b8cc424d46a310800000000000000
+      internalID: 1415904080006002151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      greenborn5_0: -9140966344239013558
+      greenborn5_1: 4927594162164894543
+      greenborn5_10: 1677421253026764405
+      greenborn5_11: -3983034189541970460
+      greenborn5_12: 1588898302567899926
+      greenborn5_13: 6248377999114618396
+      greenborn5_14: -4068141545484432702
+      greenborn5_15: 1191797919032025508
+      greenborn5_16: 976125799900890853
+      greenborn5_17: 8304400059083760619
+      greenborn5_18: 7260381295441183507
+      greenborn5_19: 5796601814490564110
+      greenborn5_2: -6820432039716270230
+      greenborn5_20: 5826363758751355733
+      greenborn5_21: 3024669416184310055
+      greenborn5_22: 9099824597347789374
+      greenborn5_23: -870260691993209802
+      greenborn5_24: 673668534699417243
+      greenborn5_25: 8776592347036448125
+      greenborn5_26: 5759631888720401672
+      greenborn5_27: -1437289137050999926
+      greenborn5_28: 1924586412693755848
+      greenborn5_29: -708626872388341506
+      greenborn5_3: -470973996285745913
+      greenborn5_30: 7778293443385901115
+      greenborn5_31: -720618501074897200
+      greenborn5_32: 8910538149520185948
+      greenborn5_33: 289485465088835625
+      greenborn5_34: -1172317872382824365
+      greenborn5_35: 5115108344590771518
+      greenborn5_36: 960442343133082115
+      greenborn5_37: 7421675478952782929
+      greenborn5_38: -104456971192352538
+      greenborn5_39: -97950363041957235
+      greenborn5_4: -5552718117158563480
+      greenborn5_40: -5182434729468900629
+      greenborn5_41: -4302074480369466019
+      greenborn5_42: 1415904080006002151
+      greenborn5_5: 2299355195742111546
+      greenborn5_6: 954762757200744368
+      greenborn5_7: -2699625673507637081
+      greenborn5_8: 320672551441343356
+      greenborn5_9: -5877517668701591935
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

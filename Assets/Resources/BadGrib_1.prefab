@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 4506804395568401806}
   m_Layer: 6
   m_Name: BadGrib_1
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,7 +708,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonAnimatorView
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: isRun
+  - Type: 9
+    SynchronizeType: 0
+    Name: isAttack
+  - Type: 9
+    SynchronizeType: 0
+    Name: isDeath
+  - Type: 9
+    SynchronizeType: 0
+    Name: isBorn
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
